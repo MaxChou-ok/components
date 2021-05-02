@@ -1,28 +1,58 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+
+<div>
+  editor
+  <Editor v-model="content"/>
+
+</div>
+
+
+  <div>
+    button
+    <h-button>default</h-button>
+    <h-button type="primary">primary</h-button>
+    <h-button type="danger">danger</h-button>
+
+     <h-button>default</h-button>
+    <h-button size="small">small</h-button>
+    <h-button size="large">large</h-button>
+
+     <h-button>default</h-button>
+    <h-button type="primary" size="small">small</h-button>
+    <h-button type="danger" size="large">large</h-button>
+
+    <!-- 未设置的错误传值测试 -->
+    <h-button size="big"></h-button>
+
+    <!-- <h-button @click.native="handle">clickme</h-button> -->
+
+    <!-- 父子通信绑定 -->
+    <h-button @click="clickHandle">clickme</h-button>
   </div>
+</div>
+
+  
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HButton from '@/components/button'
+import Editor from '@/components/Editor'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    HButton,
+    Editor
+  },
+  data(){
+  return {
+    content:'我是编辑器'
+  }
+  },
+  methods:{
+    clickHandle(e){
+       console.log('click',e)
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
